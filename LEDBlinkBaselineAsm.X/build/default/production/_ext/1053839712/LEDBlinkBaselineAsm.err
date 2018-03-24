@@ -1,0 +1,6 @@
+Warning[205] ../TurnOnLedBaseLineAsm.X/LEDBlinkBaselineAsm.asm 64 : Found directive in column 1. (list)
+Warning[205] ../TurnOnLedBaseLineAsm.X/LEDBlinkBaselineAsm.asm 71 : Found directive in column 1. (__CONFIG)
+Warning[207] ../TurnOnLedBaseLineAsm.X/LEDBlinkBaselineAsm.asm 79 : Found label after column 1. (dc1)
+Warning[207] ../TurnOnLedBaseLineAsm.X/LEDBlinkBaselineAsm.asm 80 : Found label after column 1. (dc2)
+Warning[203] ../TurnOnLedBaseLineAsm.X/LEDBlinkBaselineAsm.asm 94 : Found opcode in column 1. (movwf)
+Warning[203] ../TurnOnLedBaseLineAsm.X/LEDBlinkBaselineAsm.asm 95 : Found opcode in column 1. (GOTO)
