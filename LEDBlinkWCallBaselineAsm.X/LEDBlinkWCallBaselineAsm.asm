@@ -63,6 +63,8 @@
 
 list p=12F509
 #include <p12F509.inc>
+    
+EXTERN delay10_R  
 
 ;*******************************************************************************
 ;Configuration Word Setup
@@ -71,13 +73,11 @@ list p=12F509
 __CONFIG _MCLRE_ON & _CP_OFF & _WDT_OFF & _IntRC_OSC
     
 ;*******************************************************************************
-;Configuration Word Setup
+;Variable Definitions
 ;*******************************************************************************
     
-    UDATA
- dc1 res 1
- dc2 res 1
- dc3 res 1
+    UDATA_SHR
+ sGPIO res 1
     
 ;*******************************************************************************
 ;RC Calibration
@@ -113,41 +113,19 @@ START
  movlw b'111101'
  tris GPIO
  
+ clrf sGPIO
 mainLoop
- ; Turn on and wait 200ms
- movlw b'000010'
+ ; Switch LED
+ movf sGPIO,w
+ xorlw b'000010'
+ movwf sGPIO
  movwf GPIO
- movlw .20
+ ; Wait 500ms
+ movlw .50
  pagesel delay10
- call delay10
- 
- ; Turn off and wait 800ms
- clrf GPIO
- movlw .80
  call delay10
  
  pagesel mainLoop
  goto mainLoop
- 
-;*******************************************************************************
-;Subroutines
-;*******************************************************************************
-SUBS CODE 
-; Delay W * 10ms
-delay10_R
- movwf dc3
-dly2 movlw .13
- movwf dc2
- clrf dc1
-dly1 decfsz dc1,f
- goto dly1
- 
- decfsz dc2,f
- goto dly1
- 
- decfsz dc3,f
- goto dly2
- 
- retlw 0
- 
+
     END

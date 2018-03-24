@@ -1,0 +1,4 @@
+Warning[205] /Users/gabrielmiller/microchipProjects/LEDBlinkWCallBaselineAsm.X/delay10.asm 11 : Found directive in column 1. (GLOBAL)
+Warning[207] /Users/gabrielmiller/microchipProjects/LEDBlinkWCallBaselineAsm.X/delay10.asm 25 : Found label after column 1. (dly2)
+Warning[207] /Users/gabrielmiller/microchipProjects/LEDBlinkWCallBaselineAsm.X/delay10.asm 28 : Found label after column 1. (dly1)
+Warning[205] /Users/gabrielmiller/microchipProjects/LEDBlinkWCallBaselineAsm.X/delay10.asm 38 : Found directive in column 1. (END)

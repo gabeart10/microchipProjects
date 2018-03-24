@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=LEDBlinkWCallBaselineAsm.asm
+SOURCEFILES_QUOTED_IF_SPACED=LEDBlinkWCallBaselineAsm.asm delay10.asm
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o ${OBJECTDIR}/delay10.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o.d ${OBJECTDIR}/delay10.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o
+OBJECTFILES=${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o ${OBJECTDIR}/delay10.o
 
 # Source Files
-SOURCEFILES=LEDBlinkWCallBaselineAsm.asm
+SOURCEFILES=LEDBlinkWCallBaselineAsm.asm delay10.asm
 
 
 CFLAGS=
@@ -102,6 +102,14 @@ ${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o: LEDBlinkWCallBaselineAsm.asm  nbproject
 	@${DEP_GEN} -d "${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o"
 	@${FIXDEPS} "${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
+${OBJECTDIR}/delay10.o: delay10.asm  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/delay10.o.d 
+	@${RM} ${OBJECTDIR}/delay10.o 
+	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/delay10.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -d__DEBUG -d__MPLAB_DEBUGGER_PK3=1 -q -p$(MP_PROCESSOR_OPTION) -u  -l\\\"${OBJECTDIR}/delay10.lst\\\" -e\\\"${OBJECTDIR}/delay10.err\\\" $(ASM_OPTIONS)    -o\\\"${OBJECTDIR}/delay10.o\\\" \\\"delay10.asm\\\" 
+	@${DEP_GEN} -d "${OBJECTDIR}/delay10.o"
+	@${FIXDEPS} "${OBJECTDIR}/delay10.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
+	
 else
 ${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o: LEDBlinkWCallBaselineAsm.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -110,6 +118,14 @@ ${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o: LEDBlinkWCallBaselineAsm.asm  nbproject
 	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/LEDBlinkWCallBaselineAsm.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION) -u  -l\\\"${OBJECTDIR}/LEDBlinkWCallBaselineAsm.lst\\\" -e\\\"${OBJECTDIR}/LEDBlinkWCallBaselineAsm.err\\\" $(ASM_OPTIONS)    -o\\\"${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o\\\" \\\"LEDBlinkWCallBaselineAsm.asm\\\" 
 	@${DEP_GEN} -d "${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o"
 	@${FIXDEPS} "${OBJECTDIR}/LEDBlinkWCallBaselineAsm.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
+	
+${OBJECTDIR}/delay10.o: delay10.asm  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/delay10.o.d 
+	@${RM} ${OBJECTDIR}/delay10.o 
+	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/delay10.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION) -u  -l\\\"${OBJECTDIR}/delay10.lst\\\" -e\\\"${OBJECTDIR}/delay10.err\\\" $(ASM_OPTIONS)    -o\\\"${OBJECTDIR}/delay10.o\\\" \\\"delay10.asm\\\" 
+	@${DEP_GEN} -d "${OBJECTDIR}/delay10.o"
+	@${FIXDEPS} "${OBJECTDIR}/delay10.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
 endif
 
