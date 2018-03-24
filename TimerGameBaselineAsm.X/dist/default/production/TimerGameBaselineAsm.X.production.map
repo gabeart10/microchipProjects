@@ -1,0 +1,67 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Sat Mar 24 15:37:00 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x00000a
+                   .cinit    romdata   0x000005    program   0x000004
+                MAIN_PROG       code   0x000007    program   0x000044
+                    .code       code   0x000029    program   0x00001a
+                    RCCAL       code   0x0003ff    program   0x000002
+.config_0FFF_BUILD/DEFAULT/PRODUCTION/TIMERGA       code   0x000fff    program   0x000002
+                   .udata      udata   0x000010       data   0x000004
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000035      
+                            0x0003ff    0x0003ff      
+                            0x000fff    0x000fff      
+            56 out of 1029 program addresses used, program memory utilization is 5%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000007    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+          _MAIN_PROG_0008   0x00000f    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+          _MAIN_PROG_0020   0x000027    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                  delay10   0x000003    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                delay10_R   0x000029    program     extern /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+                     dly1   0x00002f    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+                     dly2   0x00002c    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+                main_loop   0x00000b    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                   w_tmr0   0x000015    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                   wait1s   0x000014    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+               wait1s_end   0x000020    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                  cnt_8ms   0x000010       data     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                      dc1   0x000011       data     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+                      dc2   0x000012       data     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+                      dc3   0x000013       data     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                  delay10   0x000003    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                    START   0x000007    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                main_loop   0x00000b    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+          _MAIN_PROG_0008   0x00000f    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                   wait1s   0x000014    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                   w_tmr0   0x000015    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+               wait1s_end   0x000020    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+          _MAIN_PROG_0020   0x000027    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                delay10_R   0x000029    program     extern /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+                     dly2   0x00002c    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+                     dly1   0x00002f    program     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+                  cnt_8ms   0x000010       data     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm
+                      dc1   0x000011       data     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+                      dc2   0x000012       data     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+                      dc3   0x000013       data     static /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/delay10.asm
+
+

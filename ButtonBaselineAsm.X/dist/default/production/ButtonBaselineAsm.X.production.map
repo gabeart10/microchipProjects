@@ -1,0 +1,55 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Sat Mar 24 13:46:56 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000004
+                   .cinit    romdata   0x000002    program   0x000004
+                MAIN_PROG       code   0x000004    program   0x00003a
+                    RCCAL       code   0x0003ff    program   0x000002
+.config_0FFF_BUILD/DEFAULT/PRODUCTION/BUTTONB       code   0x000fff    program   0x000002
+               .udata_shr      udata   0x000007       data   0x000001
+                   .udata      udata   0x000010       data   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000020      
+                            0x0003ff    0x0003ff      
+                            0x000fff    0x000fff      
+            35 out of 1029 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000004    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                    db_dn   0x00000a    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                    db_up   0x000017    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                   dn_dly   0x00000d    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                main_loop   0x000008    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                   up_dly   0x00001a    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                   db_cnt   0x000010       data     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                      dc1   0x000011       data     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                    sGPIO   0x000007       data     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000004    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                main_loop   0x000008    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                    db_dn   0x00000a    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                   dn_dly   0x00000d    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                    db_up   0x000017    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                   up_dly   0x00001a    program     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                    sGPIO   0x000007       data     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                   db_cnt   0x000010       data     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+                      dc1   0x000011       data     static /Users/gabrielmiller/MPLABXProjects/ButtonBaselineAsm.X/ButtonBaselineAsm.asm
+
+
