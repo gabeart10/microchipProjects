@@ -1,0 +1,70 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Sat Mar 24 19:55:19 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x00000e
+                   TABLES       code   0x000200    program   0x00003a
+                   .cinit    romdata   0x00021d    program   0x000004
+                MAIN_PROG       code   0x00021f    program   0x000028
+                    .code       code   0x000233    program   0x00001a
+                    RCCAL       code   0x0003ff    program   0x000002
+.config_0FFF_BUILD/DEFAULT/PRODUCTION/SEVENSE       code   0x000fff    program   0x000002
+               .udata_shr      udata   0x00000d       data   0x000001
+                   .udata      udata   0x000010       data   0x000003
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000006      
+                            0x000200    0x00023f      
+                            0x0003ff    0x0003ff      
+                            0x000fff    0x000fff      
+            73 out of 1029 program addresses used, program memory utilization is 7%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x00021f    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+          _MAIN_PROG_000C   0x00022b    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                  delay10   0x000003    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                delay10_R   0x000233    program     extern /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                     dly1   0x000239    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                     dly2   0x000236    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                   get7sB   0x000200    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                   get7sC   0x00020b    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                main_loop   0x000226    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                  set7seg   0x000005    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                set7seg_R   0x000216    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                      dc1   0x000010       data     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                      dc2   0x000011       data     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                      dc3   0x000012       data     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                    digit   0x00000d       data     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                  delay10   0x000003    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                  set7seg   0x000005    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                   get7sB   0x000200    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                   get7sC   0x00020b    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                set7seg_R   0x000216    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                    START   0x00021f    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                main_loop   0x000226    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+          _MAIN_PROG_000C   0x00022b    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                delay10_R   0x000233    program     extern /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                     dly2   0x000236    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                     dly1   0x000239    program     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                    digit   0x00000d       data     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/SevenSegBaselineAsm.asm
+                      dc1   0x000010       data     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                      dc2   0x000011       data     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+                      dc3   0x000012       data     static /Users/gabrielmiller/microchipProjects/SevenSegBaselineAsm.X/delay10.asm
+
+
