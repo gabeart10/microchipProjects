@@ -1,0 +1,81 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Wed Mar 28 17:21:18 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x00000a
+                   TABLES       code   0x000200    program   0x00003e
+                   .cinit    romdata   0x00021f    program   0x000004
+                MAIN_PROG       code   0x000221    program   0x000080
+                    RCCAL       code   0x0003ff    program   0x000002
+.config_0FFF_BUILD/DEFAULT/PRODUCTION/SEVENSE       code   0x000fff    program   0x000002
+               .udata_shr      udata   0x00000d       data   0x000001
+                   .udata      udata   0x000010       data   0x000003
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000004      
+                            0x000200    0x000260      
+                            0x0003ff    0x0003ff      
+                            0x000fff    0x000fff      
+            104 out of 1029 program addresses used, program memory utilization is 10%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000221    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+          _MAIN_PROG_0013   0x000234    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+          _MAIN_PROG_001D   0x00023e    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+          _MAIN_PROG_0027   0x000248    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                  end_inc   0x000260    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   get7sB   0x000200    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   get7sC   0x00020b    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                main_loop   0x00022d    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+           multiplex_loop   0x00022f    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                  set7seg   0x000003    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                set7seg_R   0x000216    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   w10_hi   0x000238    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   w10_lo   0x000240    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                    w1_hi   0x000242    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                    w1_lo   0x00024a    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   w60_hi   0x00022f    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   w60_lo   0x000236    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                     mins   0x000011       data     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                  mpx_cnt   0x000012       data     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                     secs   0x000010       data     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                     temp   0x00000d       data     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                  set7seg   0x000003    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   get7sB   0x000200    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   get7sC   0x00020b    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                set7seg_R   0x000216    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                    START   0x000221    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                main_loop   0x00022d    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   w60_hi   0x00022f    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+           multiplex_loop   0x00022f    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+          _MAIN_PROG_0013   0x000234    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   w60_lo   0x000236    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   w10_hi   0x000238    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+          _MAIN_PROG_001D   0x00023e    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                   w10_lo   0x000240    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                    w1_hi   0x000242    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+          _MAIN_PROG_0027   0x000248    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                    w1_lo   0x00024a    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                  end_inc   0x000260    program     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                     temp   0x00000d       data     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                     secs   0x000010       data     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                     mins   0x000011       data     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+                  mpx_cnt   0x000012       data     static /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm
+
+

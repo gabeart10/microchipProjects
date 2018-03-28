@@ -1,0 +1,62 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Wed Mar 28 19:16:59 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000004
+                   .cinit    romdata   0x000002    program   0x000004
+                MAIN_PROG       code   0x000004    program   0x000034
+                    RCCAL       code   0x0003ff    program   0x000002
+.config_0FFF_BUILD/DEFAULT/PRODUCTION/VOLTAGE       code   0x000fff    program   0x000002
+               .udata_shr      udata   0x00000d       data   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00001d      
+                            0x0003ff    0x0003ff      
+                            0x000fff    0x000fff      
+            32 out of 1029 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000004    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0007   0x00000b    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0008   0x00000c    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0009   0x00000d    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_000A   0x00000e    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_000B   0x00000f    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0010   0x000014    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0011   0x000015    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0012   0x000016    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0013   0x000017    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0014   0x000018    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+                main_loop   0x000008    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+                   sPORTC   0x00000d       data     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000004    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+                main_loop   0x000008    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0007   0x00000b    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0008   0x00000c    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0009   0x00000d    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_000A   0x00000e    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_000B   0x00000f    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0010   0x000014    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0011   0x000015    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0012   0x000016    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0013   0x000017    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+          _MAIN_PROG_0014   0x000018    program     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+                   sPORTC   0x00000d       data     static /Users/gabrielmiller/microchipProjects/VoltageReffBaselineAsm.X/VoltageReffBaselineAsm.asm
+
+

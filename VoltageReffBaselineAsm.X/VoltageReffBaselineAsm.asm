@@ -1,0 +1,142 @@
+;*******************************************************************************
+;                                                                              *
+;    Microchip licenses this software to you solely for use with Microchip     *
+;    products. The software is owned by Microchip and/or its licensors, and is *
+;    protected under applicable copyright laws.  All rights reserved.          *
+;                                                                              *
+;    This software and any accompanying information is for suggestion only.    *
+;    It shall not be deemed to modify Microchip?s standard warranty for its    *
+;    products.  It is your responsibility to ensure that this software meets   *
+;    your requirements.                                                        *
+;                                                                              *
+;    SOFTWARE IS PROVIDED "AS IS".  MICROCHIP AND ITS LICENSORS EXPRESSLY      *
+;    DISCLAIM ANY WARRANTY OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING  *
+;    BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS    *
+;    FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. IN NO EVENT SHALL          *
+;    MICROCHIP OR ITS LICENSORS BE LIABLE FOR ANY INCIDENTAL, SPECIAL,         *
+;    INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, HARM TO     *
+;    YOUR EQUIPMENT, COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR    *
+;    SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT LIMITED TO ANY   *
+;    DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR CONTRIBUTION, OR OTHER      *
+;    SIMILAR COSTS.                                                            *
+;                                                                              *
+;    To the fullest extend allowed by law, Microchip and its licensors         *
+;    liability shall not exceed the amount of fee, if any, that you have paid  *
+;    directly to Microchip to use this software.                               *
+;                                                                              *
+;    MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF    *
+;    THESE TERMS.                                                              *
+;                                                                              *
+;*******************************************************************************
+;                                                                              *
+;    Filename: VoltageReffBaselineAsm.asm                                                                 *
+;    Date: 3/24/18                                                                    *
+;    File Version: 0.1                                                             *
+;    Author: Gabriel Miller                                                                   *
+;    Company:                                                                  *
+;    Description:                                                              *
+;                                                                              *
+;*******************************************************************************
+;                                                                              *
+;    Notes: In the MPLAB X Help, refer to the MPASM Assembler documentation    *
+;    for information on assembly instructions.                                 *
+;                                                                              *
+;*******************************************************************************
+;                                                                              *
+;    Known Issues: This template is designed for relocatable code.  As such,   *
+;    build errors such as "Directive only allowed when generating an object    *
+;    file" will result when the 'Build in Absolute Mode' checkbox is selected  *
+;    in the project properties.  Designing code in absolute mode is            *
+;    antiquated - use relocatable mode.                                        *
+;                                                                              *
+;*******************************************************************************
+;                                                                              *
+;    Revision History:                                                         *
+;                                                                              *
+;*******************************************************************************
+
+
+
+;*******************************************************************************
+; Processor Inclusion
+;*******************************************************************************
+
+list p=16F506
+#include <p16F506.inc>
+    
+;*******************************************************************************
+; Configuration Word Setup
+;*******************************************************************************
+
+__CONFIG _MCLRE_ON & _CP_OFF & _WDT_OFF & _IOSCFS_OFF & _IntRC_OSC_RB4EN
+    
+;Pins
+constant nLO=RC3
+constant nHI=RC1
+    
+;Macro
+Delay10us  MACRO
+    goto $+1
+    goto $+1
+    goto $+1
+    goto $+1
+    goto $+1
+    ENDM
+
+;*******************************************************************************
+; Variable Definitions
+;*******************************************************************************
+    UDATA_SHR
+sPORTC res 1
+
+;*******************************************************************************
+; RC Calibration
+;*******************************************************************************
+    
+RCCAL CODE 0x3FF
+    res 1
+    
+;*******************************************************************************
+; Reset Vector
+;*******************************************************************************
+
+RES_VECT  CODE    0x0000            ; processor reset vector
+movwf OSCCAL
+    GOTO    START                   ; go to beginning of program
+
+;*******************************************************************************
+; MAIN PROGRAM
+;*******************************************************************************
+
+MAIN_PROG CODE                      ; let linker place main program
+
+START
+
+    movlw ~(1<<nLO|1<<nHI)
+    tris PORTC
+    movlw 1<<C2PREF1|0<<C2NREF|1<<C2POL|1<<C2ON
+    movwf CM2CON0
+main_loop
+    clrf sPORTC
+    
+    movlw 1<<VREN|0<<VRR|.5
+    movwf VRCON
+    Delay10us
+    
+    btfss CM2CON0,C2OUT
+    bsf sPORTC,nLO
+    
+    movlw 1<<VREN|0<<VRR|.11
+    movwf VRCON
+    Delay10us
+    
+    btfss CM2CON0,C2OUT
+    bsf sPORTC,nHI
+    
+    movf sPORTC,w
+    movwf PORTC
+    
+    goto main_loop
+    
+
+    END
