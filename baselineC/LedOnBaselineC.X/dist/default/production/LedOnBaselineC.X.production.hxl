@@ -1,0 +1,23 @@
+### HEXMate logfile and output summary ###
+### Memory Usage ###
+ Unused memory ranges:
+  10h - 1FFDh
+  
+ dist/default/production/LedOnBaselineC.X.production.hex ranges:
+  0h - Fh
+  1FFEh - 1FFFh
+  
+### Hex Memory Map ###
+ Legend:
+  - = Unused memory
+  F = Filled ROM
+  S = Stored serial code
+  A = Stored ASCII string
+  R = Reserved for checksum
+  C = Stored checksum result
+  T = Trailing code
+  & = Find & replace opcode
+  X = Find & delete opcode
+  1 = dist/default/production/LedOnBaselineC.X.production.hex
+00000000: 1111111111111111------------------------------------------------
+00001FC0: --------------------------------------------------------------11
