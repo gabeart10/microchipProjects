@@ -1,0 +1,7 @@
+Warning[205] /Users/gabrielmiller/microchipProjects/LedOnMidrangeAsm.X/LedOnMidrangeAsm.asm 64 : Found directive in column 1. (list)
+Warning[205] /Users/gabrielmiller/microchipProjects/LedOnMidrangeAsm.X/LedOnMidrangeAsm.asm 67 : Found directive in column 1. (errorlevel)
+Warning[205] /Users/gabrielmiller/microchipProjects/LedOnMidrangeAsm.X/LedOnMidrangeAsm.asm 73 : Found directive in column 1. (__CONFIG)
+Warning[203] /Users/gabrielmiller/microchipProjects/LedOnMidrangeAsm.X/LedOnMidrangeAsm.asm 80 : Found opcode in column 1. (call)
+Warning[205] /Users/gabrielmiller/microchipProjects/LedOnMidrangeAsm.X/LedOnMidrangeAsm.asm 81 : Found directive in column 1. (banksel)
+Warning[203] /Users/gabrielmiller/microchipProjects/LedOnMidrangeAsm.X/LedOnMidrangeAsm.asm 82 : Found opcode in column 1. (movwf)
+Warning[203] /Users/gabrielmiller/microchipProjects/LedOnMidrangeAsm.X/LedOnMidrangeAsm.asm 83 : Found opcode in column 1. (GOTO)

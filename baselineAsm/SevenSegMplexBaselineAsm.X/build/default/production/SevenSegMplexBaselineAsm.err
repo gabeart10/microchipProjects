@@ -1,0 +1,7 @@
+Warning[205] /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm 64 : Found directive in column 1. (list)
+Warning[205] /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm 71 : Found directive in column 1. (__CONFIG)
+Warning[203] /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm 102 : Found opcode in column 1. (movwf)
+Warning[202] /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm 136 : Argument out of range.  Least significant bits used.
+Warning[207] /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm 199 : Found label after column 1. (get7sB)
+Warning[207] /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm 211 : Found label after column 1. (get7sC)
+Warning[207] /Users/gabrielmiller/microchipProjects/SevenSegMplexBaselineAsm.X/SevenSegMplexBaselineAsm.asm 215 : Found label after column 1. (set7seg_R)

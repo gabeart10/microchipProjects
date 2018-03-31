@@ -1,0 +1,66 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Fri Mar 30 17:39:51 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x00000a
+                   TABLES       code   0x000200    program   0x000056
+                   .cinit    romdata   0x00022b    program   0x000004
+                MAIN_PROG       code   0x00022d    program   0x000044
+                    RCCAL       code   0x0003ff    program   0x000002
+.config_0FFF_BUILD/DEFAULT/PRODUCTION/HEXDISP       code   0x000fff    program   0x000002
+               .udata_shr      udata   0x00000d       data   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000004      
+                            0x000200    0x00024e      
+                            0x0003ff    0x0003ff      
+                            0x000fff    0x000fff      
+            86 out of 1029 program addresses used, program memory utilization is 8%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x00022d    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+          _MAIN_PROG_0013   0x000240    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+          _MAIN_PROG_001D   0x00024a    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                   get7sB   0x000200    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                   get7sC   0x000211    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                main_loop   0x000237    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                  set7seg   0x000003    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                set7seg_R   0x000222    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                   w10_hi   0x00023a    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                   w10_lo   0x000242    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                    w1_hi   0x000244    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                    w1_lo   0x00024c    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                    w_adc   0x000238    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                     temp   0x00000d       data     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                  set7seg   0x000003    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                   get7sB   0x000200    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                   get7sC   0x000211    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                set7seg_R   0x000222    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                    START   0x00022d    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                main_loop   0x000237    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                    w_adc   0x000238    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                   w10_hi   0x00023a    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+          _MAIN_PROG_0013   0x000240    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                   w10_lo   0x000242    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                    w1_hi   0x000244    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+          _MAIN_PROG_001D   0x00024a    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                    w1_lo   0x00024c    program     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+                     temp   0x00000d       data     static /Users/gabrielmiller/microchipProjects/HexDisplayBaselineAsm.X/HexDisplayBaselineAsm.asm
+
+

@@ -1,0 +1,453 @@
+MPASM 5.77  /USERS/GABRIELMILLER/MICROCHIPPR   3-28-2018  17:21:17         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;*******************************************************************************
+                      00002 ;                                                                              *
+                      00003 ;    Microchip licenses this software to you solely for use with Microchip     *
+                      00004 ;    products. The software is owned by Microchip and/or its licensors, and is *
+                      00005 ;    protected under applicable copyright laws.  All rights reserved.          *
+                      00006 ;                                                                              *
+                      00007 ;    This software and any accompanying information is for suggestion only.    *
+                      00008 ;    It shall not be deemed to modify Microchip?s standard warranty for its    *
+                      00009 ;    products.  It is your responsibility to ensure that this software meets   *
+                      00010 ;    your requirements.                                                        *
+                      00011 ;                                                                              *
+                      00012 ;    SOFTWARE IS PROVIDED "AS IS".  MICROCHIP AND ITS LICENSORS EXPRESSLY      *
+                      00013 ;    DISCLAIM ANY WARRANTY OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING  *
+                      00014 ;    BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS    *
+                      00015 ;    FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. IN NO EVENT SHALL          *
+                      00016 ;    MICROCHIP OR ITS LICENSORS BE LIABLE FOR ANY INCIDENTAL, SPECIAL,         *
+                      00017 ;    INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, HARM TO     *
+                      00018 ;    YOUR EQUIPMENT, COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR    *
+                      00019 ;    SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT LIMITED TO ANY   *
+                      00020 ;    DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR CONTRIBUTION, OR OTHER      *
+                      00021 ;    SIMILAR COSTS.                                                            *
+                      00022 ;                                                                              *
+                      00023 ;    To the fullest extend allowed by law, Microchip and its licensors         *
+                      00024 ;    liability shall not exceed the amount of fee, if any, that you have paid  *
+                      00025 ;    directly to Microchip to use this software.                               *
+                      00026 ;                                                                              *
+                      00027 ;    MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF    *
+                      00028 ;    THESE TERMS.                                                              *
+                      00029 ;                                                                              *
+                      00030 ;*******************************************************************************
+                      00031 ;                                                                              *
+                      00032 ;    Filename: SevenSegMplexBaselineAsm.asm                                                             
+                                *
+                      00033 ;    Date: 3/24/18                                                                    *
+                      00034 ;    File Version: 0.1                                                             *
+                      00035 ;    Author: Gabriel Miller                                                                   *
+                      00036 ;    Company:                                                                  *
+                      00037 ;    Description: Turns 3 7 seg display into a timer m:ss                                               
+                                         *
+                      00038 ;                                                                              *
+                      00039 ;*******************************************************************************
+                      00040 ;                                                                              *
+                      00041 ;    Notes: In the MPLAB X Help, refer to the MPASM Assembler documentation    *
+                      00042 ;    for information on assembly instructions.                                 *
+                      00043 ;                                                                              *
+                      00044 ;*******************************************************************************
+                      00045 ;                                                                              *
+                      00046 ;    Known Issues: This template is designed for relocatable code.  As such,   *
+                      00047 ;    build errors such as "Directive only allowed when generating an object    *
+                      00048 ;    file" will result when the 'Build in Absolute Mode' checkbox is selected  *
+                      00049 ;    in the project properties.  Designing code in absolute mode is            *
+                      00050 ;    antiquated - use relocatable mode.                                        *
+                      00051 ;                                                                              *
+MPASM 5.77  /USERS/GABRIELMILLER/MICROCHIPPR   3-28-2018  17:21:17         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00052 ;*******************************************************************************
+                      00053 ;                                                                              *
+                      00054 ;    Revision History:                                                         *
+                      00055 ;                                                                              *
+                      00056 ;*******************************************************************************
+                      00057 
+                      00058 
+                      00059 
+                      00060 ;*******************************************************************************
+                      00061 ; Processor Inclusion
+                      00062 ;*******************************************************************************
+                      00063 
+Warning[205]: Found directive in column 1. (list)
+                      00064 list p=16F506
+                      00065 #include <p16F506.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Nov 22 2017
+                      00005 ;  MPASM PIC16F506 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2017 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      00243         LIST
+                      00066     
+                      00067 ;*******************************************************************************
+                      00068 ; Configuration Word Setup
+                      00069 ;*******************************************************************************
+                      00070 
+Warning[205]: Found directive in column 1. (__CONFIG)
+0FFF   0FB4           00071 __CONFIG _MCLRE_ON & _CP_OFF & _WDT_OFF & _IOSCFS_OFF & _IntRC_OSC_RB4EN
+                      00072     
+                      00073 ;Pins
+                      00074 #define MINUTES PORTC,5
+                      00075 #define TENS PORTB,5
+                      00076 #define ONES PORTC,0
+                      00077 
+                      00078 ;*******************************************************************************
+                      00079 ; Variable Definitions
+                      00080 ;*******************************************************************************
+                      00081     UDATA_SHR
+0000                  00082 temp res 1
+                      00083  
+                      00084     UDATA
+0000                  00085 secs res 1
+0001                  00086 mins res 1
+0002                  00087 mpx_cnt res 1
+                      00088 
+                      00089 
+                      00090 ;*******************************************************************************
+                      00091 ; RC Calibration
+                      00092 ;*******************************************************************************
+MPASM 5.77  /USERS/GABRIELMILLER/MICROCHIPPR   3-28-2018  17:21:17         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00093     
+                      00094 RCCAL CODE 0x3FF
+03FF   0FFF           00095     res 1
+                      00096     
+                      00097 ;*******************************************************************************
+                      00098 ; Reset Vector
+                      00099 ;*******************************************************************************
+                      00100 
+                      00101 RES_VECT  CODE    0x0000            ; processor reset vector
+Warning[203]: Found opcode in column 1. (movwf)
+0000   0025           00102 movwf OSCCAL
+0001   ????           00103     pagesel START
+0002   0A??           00104     GOTO    START                   ; go to beginning of program
+                      00105     
+                      00106 ;*******************************************************************************
+                      00107 ; Subroutine Vector
+                      00108 ;*******************************************************************************
+                      00109    
+0003                  00110 set7seg
+0003   ????           00111     pagesel set7seg_R
+0004   0A??           00112     goto set7seg_R
+                      00113 
+                      00114 ;*******************************************************************************
+                      00115 ; MAIN PROGRAM
+                      00116 ;*******************************************************************************
+                      00117 
+                      00118 MAIN_PROG CODE                      ; let linker place main program
+                      00119 
+0000                  00120 START
+0000   0040           00121     clrw
+0001   0006           00122     tris PORTB
+0002   0007           00123     tris PORTC
+0003   0069           00124     clrf ADCON0
+0004   0468           00125     bcf CM1CON0,C1ON
+0005   046B           00126     bcf CM2CON0,C2ON
+                      00127     
+0006   0CD7           00128     movlw b'11010111'
+0007   0002           00129     option
+                      00130     
+0008   ???? ????      00131     banksel mins
+000A   00??           00132     clrf mins
+000B   00??           00133     clrf secs
+                      00134     
+000C                  00135 main_loop
+Warning[202]: Argument out of range.  Least significant bits used.
+000C   0CA4           00136     movlw 1000000/2048/3
+000D   00??           00137     movwf mpx_cnt
+                      00138     
+000E                  00139 multiplex_loop
+000E   0741           00140 w60_hi btfss TMR0,2
+000F   0A??           00141     goto w60_hi
+0010   02??           00142     movf mins,w
+0011   ????           00143     pagesel set7seg
+MPASM 5.77  /USERS/GABRIELMILLER/MICROCHIPPR   3-28-2018  17:21:17         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0012   09??           00144     call set7seg
+0013   ????           00145     pagesel $
+0014   05A7           00146     bsf MINUTES
+0015   0641           00147 w60_lo btfsc TMR0,2
+0016   0A??           00148     goto w60_lo
+0017   0741           00149 w10_hi btfss TMR0,2
+0018   0A??           00150     goto w10_hi
+0019   03??           00151     swapf secs,w
+001A   0E0F           00152     andlw 0x0F
+001B   ????           00153     pagesel set7seg
+001C   09??           00154     call set7seg
+001D   ????           00155     pagesel $
+001E   05A6           00156     bsf TENS
+001F   0641           00157 w10_lo btfsc TMR0,2
+0020   0A??           00158     goto w10_lo
+0021   0741           00159 w1_hi btfss TMR0,2
+0022   0A??           00160     goto w1_hi
+0023   02??           00161     movf secs,w
+0024   0E0F           00162     andlw 0x0F
+0025   ????           00163     pagesel set7seg
+0026   09??           00164     call set7seg
+0027   ????           00165     pagesel $
+0028   0507           00166     bsf ONES
+0029   0641           00167 w1_lo btfsc TMR0,2
+002A   0A??           00168     goto w1_lo
+                      00169     
+002B   02??           00170     decfsz mpx_cnt,f
+002C   0A??           00171     goto multiplex_loop
+                      00172     
+002D   02??           00173     incf secs,f
+002E   02??           00174     movf secs,w
+002F   0E0F           00175     andlw 0x0F
+0030   0F0A           00176     xorlw .10
+0031   0743           00177     btfss STATUS,Z
+0032   0A??           00178     goto end_inc
+0033   0C06           00179     movlw .6
+0034   01??           00180     addwf secs,f
+0035   0C60           00181     movlw 0x60
+0036   01??           00182     xorwf secs,w
+0037   0743           00183     btfss STATUS,Z
+0038   0A??           00184     goto end_inc
+0039   00??           00185     clrf secs
+003A   02??           00186     incf mins,f
+003B   0C0A           00187     movlw .10
+003C   01??           00188     xorwf mins,w
+003D   0643           00189     btfsc STATUS,Z
+003E   00??           00190     clrf mins
+003F                  00191 end_inc
+003F   0A??           00192     goto main_loop   
+                      00193       
+                      00194 ;*******************************************************************************
+                      00195 ; Lookup Tables
+                      00196 ;*******************************************************************************
+MPASM 5.77  /USERS/GABRIELMILLER/MICROCHIPPR   3-28-2018  17:21:17         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00197 TABLES  CODE  0x200 
+                      00198     
+Warning[207]: Found label after column 1. (get7sB)
+0200   01E2           00199   get7sB addwf PCL,f
+0201   0812           00200     retlw b'010010' ;0
+0202   0800           00201     retlw b'000000' ;1
+0203   0811           00202     retlw b'010001' ;2
+0204   0801           00203     retlw b'000001' ;3
+0205   0803           00204     retlw b'000011' ;4
+0206   0803           00205     retlw b'000011' ;5
+0207   0813           00206     retlw b'010011' ;6
+0208   0800           00207     retlw b'000000' ;7
+0209   0813           00208     retlw b'010011' ;8
+020A   0803           00209     retlw b'000011' ;9
+                      00210     
+Warning[207]: Found label after column 1. (get7sC)
+020B   01E2           00211   get7sC addwf PCL,f
+020C   081E 0814 080E 00212     dt b'011110',b'010100',b'001110',b'011110',b'010100' ; 0,1,2,3,4 
+       081E 0814 
+0211   081A 081A 0816 00213     dt b'011010',b'011010',b'010110',b'011110',b'011110' ; 5,6,7,8,9
+       081E 081E 
+                      00214     
+Warning[207]: Found label after column 1. (set7seg_R)
+0216                  00215   set7seg_R 
+0216   0066           00216     clrf PORTB
+0217   0067           00217     clrf PORTC
+                      00218     
+0218   00??           00219     movwf temp
+0219   09??           00220     call get7sB
+021A   0026           00221     movwf PORTB
+021B   02??           00222     movf temp,w
+021C   09??           00223     call get7sC
+021D   0027           00224     movwf PORTC
+021E   0800           00225     retlw 0
+                      00226         
+0FB4                  00227     END
+MPASM 5.77  /USERS/GABRIELMILLER/MICROCHIPPR   3-28-2018  17:21:17         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADCON0                            00000009
+ADCS0                             00000004
+ADCS1                             00000005
+ADON                              00000000
+ADRES                             0000000A
+ANS0                              00000006
+ANS1                              00000007
+C                                 00000000
+C1NREF                            00000002
+C1ON                              00000003
+C1OUT                             00000007
+C1POL                             00000005
+C1PREF                            00000001
+C2NREF                            00000002
+C2ON                              00000003
+C2OUT                             00000007
+C2POL                             00000005
+C2PREF1                           00000001
+C2PREF2                           00000004
+CAL0                              00000001
+CAL1                              00000002
+CAL2                              00000003
+CAL3                              00000004
+CAL4                              00000005
+CAL5                              00000006
+CAL6                              00000007
+CHS0                              00000002
+CHS1                              00000003
+CM1CON0                           00000008
+CM2CON0                           0000000B
+CWUF                              00000006
+DC                                00000001
+F                                 00000001
+FSR                               00000004
+GO                                00000001
+GO_NOT_DONE                       00000001
+INDF                              00000000
+MINUTES                           PORTC,5
+NOT_C1OUTEN                       00000006
+NOT_C1T0CS                        00000004
+NOT_C1WU                          00000000
+NOT_C2OUTEN                       00000006
+NOT_C2WU                          00000000
+NOT_DONE                          00000001
+NOT_GPPU                          00000006
+NOT_GPWU                          00000007
+NOT_PD                            00000003
+NOT_RBPU                          00000006
+NOT_RBWU                          00000007
+NOT_TO                            00000004
+ONES                              PORTC,0
+OSCCAL                            00000005
+PA0                               00000005
+MPASM 5.77  /USERS/GABRIELMILLER/MICROCHIPPR   3-28-2018  17:21:17         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PCL                               00000002
+PORTB                             00000006
+PORTC                             00000007
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RBWUF                             00000007
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+START                             00000000
+STATUS                            00000003
+T0CS                              00000005
+T0SE                              00000004
+TENS                              PORTB,5
+TMR0                              00000001
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             0000000C
+VREN                              00000007
+VROE                              00000006
+VRR                               00000005
+W                                 00000000
+Z                                 00000002
+_CONFIG                           00000FFF
+_CP_OFF                           00000FFF
+_CP_ON                            00000FEF
+_EC_OSC                           00000FFB
+_ExtRC_OSC_CLKOUTEN               00000FFF
+MPASM 5.77  /USERS/GABRIELMILLER/MICROCHIPPR   3-28-2018  17:21:17         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_ExtRC_OSC_RB4EN                  00000FFE
+_HS_OSC                           00000FFA
+_IDLOC0                           00000400
+_IDLOC1                           00000401
+_IDLOC2                           00000402
+_IDLOC3                           00000403
+_IOSCFS_OFF                       00000FBF
+_IOSCFS_ON                        00000FFF
+_IntRC_OSC_CLKOUTEN               00000FFD
+_IntRC_OSC_RB4EN                  00000FFC
+_LP_OSC                           00000FF8
+_MAIN_PROG_0013                   00000013
+_MAIN_PROG_001D                   0000001D
+_MAIN_PROG_0027                   00000027
+_MCLRE_OFF                        00000FDF
+_MCLRE_ON                         00000FFF
+_OSC_EC                           00000FFB
+_OSC_ExtRC_CLKOUTEN               00000FFF
+_OSC_ExtRC_RB4EN                  00000FFE
+_OSC_HS                           00000FFA
+_OSC_IntRC_CLKOUTEN               00000FFD
+_OSC_IntRC_RB4EN                  00000FFC
+_OSC_LP                           00000FF8
+_OSC_XT                           00000FF9
+_WDT_OFF                          00000FF7
+_WDT_ON                           00000FFF
+_XT_OSC                           00000FF9
+__16F506                          00000001
+end_inc                           0000003F
+get7sB                            00000200
+get7sC                            0000020B
+main_loop                         0000000C
+mins                              00000001
+mpx_cnt                           00000002
+multiplex_loop                    0000000E
+secs                              00000000
+set7seg                           00000003
+set7seg_R                         00000216
+temp                              00000000
+w10_hi                            00000017
+w10_lo                            0000001F
+w1_hi                             00000021
+w1_lo                             00000029
+w60_hi                            0000000E
+w60_lo                            00000015
+
+Errors   :     0
+Warnings :     7 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

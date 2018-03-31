@@ -1,0 +1,4 @@
+Warning[205] /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm 64 : Found directive in column 1. (list)
+Warning[205] /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm 67 : Found directive in column 1. (EXTERN)
+Warning[205] /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm 73 : Found directive in column 1. (__CONFIG)
+Warning[203] /Users/gabrielmiller/microchipProjects/TimerGameBaselineAsm.X/TimerGameBaselineAsm.asm 94 : Found opcode in column 1. (movwf)
