@@ -3,10 +3,10 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>ButtonBaselineC</name>
-            <creation-uuid>f3dd6ff3-19ae-4085-aa25-d57de1815764</creation-uuid>
+            <name>ReactionGameBaselineC</name>
+            <creation-uuid>7ec57c50-5601-4bd0-9844-e4bdfc460db2</creation-uuid>
             <make-project-type>0</make-project-type>
-            <c-extensions>c</c-extensions>
+            <c-extensions/>
             <cpp-extensions/>
             <header-extensions/>
             <asminc-extensions/>
