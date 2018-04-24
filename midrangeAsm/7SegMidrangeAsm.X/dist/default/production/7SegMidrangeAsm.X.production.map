@@ -1,0 +1,58 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Thu Apr 19 10:32:11 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                 RES_VECT       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                MAIN_PROG       code   0x000003    program   0x00003a
+                   TABLES       code   0x000020    program   0x00002c
+                    .code       code   0x000036    program   0x000018
+.config_2007_BUILD/DEFAULT/PRODUCTION/7SEGMID       code   0x002007    program   0x000002
+               .udata_shr      udata   0x000070       data   0x000004
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000041      
+                            0x002007    0x002007      
+            67 out of 2310 program addresses used, program memory utilization is 2%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000003    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/7SegMidrangeAsm.asm
+                  delay10   0x000036    program     extern /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                     dly1   0x00003b    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                     dly2   0x000038    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                main_loop   0x000007    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/7SegMidrangeAsm.asm
+                  tb7segA   0x000020    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/7SegMidrangeAsm.asm
+                  tb7segC   0x00002b    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/7SegMidrangeAsm.asm
+                      dc1   0x000071       data     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                      dc2   0x000072       data     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                      dc3   0x000073       data     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                    digit   0x000070       data     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/7SegMidrangeAsm.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    START   0x000003    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/7SegMidrangeAsm.asm
+                main_loop   0x000007    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/7SegMidrangeAsm.asm
+                  tb7segA   0x000020    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/7SegMidrangeAsm.asm
+                  tb7segC   0x00002b    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/7SegMidrangeAsm.asm
+                  delay10   0x000036    program     extern /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                     dly2   0x000038    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                     dly1   0x00003b    program     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                    digit   0x000070       data     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/7SegMidrangeAsm.asm
+                      dc1   0x000071       data     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                      dc2   0x000072       data     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+                      dc3   0x000073       data     static /Users/gabrielmiller/microchipProjects/midrangeAsm/7SegMidrangeAsm.X/delay10.asm
+
+
