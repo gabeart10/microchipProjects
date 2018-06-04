@@ -79,10 +79,10 @@ __CONFIG _MCLRE_ON & _CP_OFF & _CPD_OFF & _BOD_OFF & _WDT_OFF & _PWRTE_ON & _INT
 ; Variable Definitions
 ;*******************************************************************************
     
-SeqMem UDATA ;Sequence memory
+SeqMem UDATA ;Defining the mem that stores the seq of colors
 seqmem res 25
  
-GenVars UDATA_SHR
+GenVars UDATA_SHR ;Defining general vars for the program
 sm_row res 1
 sm_column res 1
 counter res 1
@@ -94,21 +94,21 @@ rot_mem res 1
 sub_var res 1
 correct res 1
  
-constant SEQ_SIZE=.25
-constant RED=b'00'
+constant SEQ_SIZE=.25 ;Setting a constant for the max size of the seq
+constant RED=b'00' ;Setting a constant for the code for each color
 constant BLUE=b'01'
 constant YELLOW=b'10'
 constant GREEN=b'11'
  
 ; Pins
  
-#define RED_B PORTC,4
+#define RED_B PORTC,4 ;Defining the location of the buttons
 #define BLUE_B PORTA,2
 #define YELLOW_B PORTA,4
 #define GREEN_B PORTA,5
  
  
-#define RED_L b'000001'
+#define RED_L b'000001' ;Defininf the location of the LEDs
 #define BLUE_L b'000010'
 #define YELLOW_L b'000100'
 #define GREEN_L b'001000'
@@ -131,11 +131,11 @@ START
     banksel TRISC
     movlw b'11110000' ;Tris PortC
     movwf TRISC
-    movlw b'111'
+    movlw b'111' ;Turning of analog inputs and comparators
     movwf CMCON0
     clrf ANSEL
 
-    banksel PORTC
+    banksel PORTC ;Making sure all vars are clear
     clrf PORTC 
     clrf sm_row
     clrf sm_column
@@ -171,28 +171,28 @@ seq_clr clrf INDF
     
 main_loop
     banksel PORTA
-start_b btfsc PORTA,2
+start_b btfsc PORTA,2 ;Waiting for blue button to be pressed to start the game
     goto start_b
  
 loop 
-    call add_seq
-    call display_lights
-    call user_test
-    xorlw .1
+    call add_seq ;Adding a new color to the seq
+    call display_lights ;Displaying all colors in the seq
+    call user_test ;Testing for the correct button presses
+    xorlw .1 ;Checking if right or wrong
     btfss STATUS,Z
-    goto wrong
-    incf correct,f
-    movf sm_row
-    xorlw .25
+    goto wrong ;Wrong
+    incf correct,f ;Right
+    movf sm_row ;Checking if the seq is at its max 
+    xorlw SEQ_SIZE 
     btfsc STATUS,Z
     goto wrong
     goto loop
 wrong
-    banksel PORTC
+    banksel PORTC ;Display the lower half of correct
     movf correct,w
     movwf PORTC
     banksel PORTA
-wrong_b btfsc PORTA,2
+wrong_b btfsc PORTA,2 ;Waiting for blue button to be pressed to flip the halfs of correct
     goto wrong_b
     
     swapf correct,f   
@@ -276,19 +276,19 @@ display_light
     goto dis_green
     goto dis_end
     
-    dis_red movlw RED_L
+    dis_red movlw RED_L ;Display red
     movwf PORTC
     goto dis_end
     
-    dis_blue movlw BLUE_L
+    dis_blue movlw BLUE_L ;Display blue
     movwf PORTC
     goto dis_end
     
-    dis_yellow movlw YELLOW_L
+    dis_yellow movlw YELLOW_L ;Display yellow
     movwf PORTC
     goto dis_end
     
-    dis_green movlw GREEN_L
+    dis_green movlw GREEN_L ;Display green
     movwf PORTC
     
     dis_end retlw 0
@@ -407,7 +407,7 @@ user_input
     movwf sub_var
     clrf TMR0
     clrf counter
-timer_loop
+timer_loop ;Counting time while waiting for user input
     banksel TMR0
     movlw .250 ;250 * 32us/tick = 8ms
     subwf TMR0,w
@@ -415,12 +415,12 @@ timer_loop
     goto button_test
     incf counter,f
     movf counter,w
-    xorlw .125 ;8ms * 125 = 1000ms
+    xorlw .125 ;8ms * 125 = 1000ms If timer hits 1 sec fail
     btfsc STATUS,Z
     goto fail
     clrf TMR0
 button_test 
-    banksel PORTA
+    banksel PORTA ;Test each button for presses
     btfss RED_B
     goto red_t
     btfss BLUE_B
@@ -431,7 +431,7 @@ button_test
     goto green_t
     goto timer_loop
     
-red_t
+red_t ;Red test
     movlw RED
     xorwf sub_var,w
     btfss STATUS,Z
@@ -441,7 +441,7 @@ red_up btfss RED_B
     movlw .1
     call delay10
     retlw 1
-blue_t
+blue_t ;Blue test
     movlw BLUE
     xorwf sub_var,w
     btfss STATUS,Z
@@ -451,7 +451,7 @@ blue_up btfss BLUE_B
     movlw .1
     call delay10
     retlw 1
-yellow_t
+yellow_t ;Yellow test
     movlw YELLOW
     xorwf sub_var,w
     btfss STATUS,Z
@@ -461,7 +461,7 @@ yellow_up btfss YELLOW_B
     movlw .1
     call delay10
     retlw 1
-green_t
+green_t ;Green test
     movlw GREEN
     xorwf sub_var,w
     btfss STATUS,Z
