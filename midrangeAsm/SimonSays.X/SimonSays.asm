@@ -189,14 +189,16 @@ loop
     goto loop
 wrong
     banksel PORTC
-    bsf PORTC,0
-    ;banksel PORTA
-    ;movf correct,w
-    ;btfss PORTA,2
-    ;;swapf correct,w
-    ;andlw 0x08
-    ;banksel PORTC
-    ;movwf PORTC
+    movf correct,w
+    movwf PORTC
+    banksel PORTA
+wrong_b btfsc PORTA,2
+    goto wrong_b
+    
+    swapf correct,f   
+wrong_b_up btfss PORTA,2
+    goto wrong_b_up
+    
     goto wrong
     
 ; Subroutines    
