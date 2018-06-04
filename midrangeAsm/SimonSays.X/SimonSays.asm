@@ -30,7 +30,7 @@
 ;*******************************************************************************
 ;                                                                              *
 ;    Filename: SimonSays.asm                                                                 *
-;    Date: 5/9/18                                                                    *
+;    Date: 4/20/18                                                                    *
 ;    File Version: 0.1                                                             *
 ;    Author: Gabriel Miller                                                                   *
 ;    Company:                                                                  *
@@ -86,6 +86,7 @@ GenVars UDATA_SHR
 sm_row res 1
 sm_column res 1
 counter res 1
+counter2 res 1
 rand res 1
 column_count res 1
 row_count res 1
@@ -140,6 +141,7 @@ START
     clrf sm_column
     clrf rand
     clrf counter
+    clrf counter2
     clrf column_count
     clrf row_count
     clrf rot_mem
@@ -163,7 +165,7 @@ seq_clr clrf INDF
     banksel PR2
     movwf PR2
     
-    movlw b'1100100' ;Sets up TMR0 on timer mode with a 1:32 prescale 
+    movlw b'11000100' ;Sets up TMR0 on timer mode with a 1:32 prescale 
     banksel OPTION_REG
     movwf OPTION_REG
     
@@ -176,7 +178,8 @@ loop
     call add_seq
     call display_lights
     call user_test
-    btfss W,0
+    xorlw .1
+    btfss STATUS,Z
     goto wrong
     incf correct,f
     movf sm_row
@@ -185,12 +188,15 @@ loop
     goto wrong
     goto loop
 wrong
-    banksel PORTA
-    movf correct,w
-    btfss PORTA,2
-    swapf correct,w
-    andlw 0x08
-    movwf PORTC
+    banksel PORTC
+    bsf PORTC,0
+    ;banksel PORTA
+    ;movf correct,w
+    ;btfss PORTA,2
+    ;;swapf correct,w
+    ;andlw 0x08
+    ;banksel PORTC
+    ;movwf PORTC
     goto wrong
     
 ; Subroutines    
@@ -204,9 +210,11 @@ add_seq
     xorlw .0
     btfsc STATUS,Z
     goto col0
+    movf sm_column,w
     xorlw .1
     btfsc STATUS,Z
     goto col1
+    movf sm_column,w
     xorlw .2
     btfsc STATUS,Z
     goto col2
@@ -234,14 +242,13 @@ row_m incf FSR,f
 row_m_end
     
     movf rand,w ;Update row with new data
-    iorwf INDF,f
+    xorwf INDF,f
     
     incf sm_column,w ;Inc column, if 5 set 0 and inc row
-    xorlw .5
+    xorlw .4
     btfss STATUS,Z
     goto inc_not0
-    movlw .0
-    movwf sm_column
+    clrf sm_column
     incf sm_row,f 
     goto inc_0
 inc_not0 incf sm_column,f
@@ -302,7 +309,7 @@ row_l ;Displays all rows except for current one
 rowp_l movlw 0x03
     andwf rot_mem,w
     call display_light
-    movlw .50
+    movlw .100
     call delay10
     banksel PORTC
     clrf PORTC
@@ -353,7 +360,7 @@ user_test
     movwf row_count
 row_l_ut ;Gets all rows except for current one and test them
     movlw .4
-    movwf counter
+    movwf counter2
     movf INDF,w
     movwf rot_mem
 rowp_l_ut movlw 0x03
@@ -364,7 +371,7 @@ rowp_l_ut movlw 0x03
     goto fail_test
     rrf rot_mem,f
     rrf rot_mem,f
-    decfsz counter,f
+    decfsz counter2,f
     goto rowp_l_ut
     incf FSR,f
     decfsz row_count,f
@@ -409,6 +416,7 @@ timer_loop
     xorlw .125 ;8ms * 125 = 1000ms
     btfsc STATUS,Z
     goto fail
+    clrf TMR0
 button_test 
     banksel PORTA
     btfss RED_B
@@ -428,6 +436,8 @@ red_t
     goto fail
 red_up btfss RED_B
     goto red_up
+    movlw .1
+    call delay10
     retlw 1
 blue_t
     movlw BLUE
@@ -436,6 +446,8 @@ blue_t
     goto fail
 blue_up btfss BLUE_B
     goto blue_up
+    movlw .1
+    call delay10
     retlw 1
 yellow_t
     movlw YELLOW
@@ -444,7 +456,8 @@ yellow_t
     goto fail
 yellow_up btfss YELLOW_B
     goto yellow_up
-    bcf PORTC,2
+    movlw .1
+    call delay10
     retlw 1
 green_t
     movlw GREEN
@@ -453,6 +466,8 @@ green_t
     goto fail
 green_up btfss GREEN_B
     goto green_up
+    movlw .1
+    call delay10
     retlw 1
 
 fail
