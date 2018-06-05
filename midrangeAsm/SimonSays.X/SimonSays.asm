@@ -109,9 +109,9 @@ constant GREEN=b'11'
  
  
 #define RED_L b'000001' ;Defininf the location of the LEDs
-#define BLUE_L b'000010'
-#define YELLOW_L b'000100'
-#define GREEN_L b'001000'
+#define BLUE_L b'000100'
+#define YELLOW_L b'001000'
+#define GREEN_L b'000010'
 
 ;*******************************************************************************
 ; Reset Vector + RC Cal
